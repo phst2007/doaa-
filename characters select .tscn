@@ -1,0 +1,61 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmyf8wvhcb5mc"]
+
+[ext_resource type="Texture2D" path="res://DOAA! foto.png" id="1_7p3rq"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_21wfg"]
+texture = ExtResource("1_7p3rq")
+modulate_color = Color(0.517184, 0.517184, 0.517184, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="foto" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(48.2845, 27.2759)
+theme_override_styles/panel = SubResource("StyleBoxTexture_21wfg")
+
+[node name="Button1" type="Button" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 345.0
+offset_bottom = 141.0
+theme_override_font_sizes/font_size = 50
+text = "character 1"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 64.0
+offset_right = 729.0
+offset_bottom = 141.0
+theme_override_font_sizes/font_size = 50
+text = "character 2
+"
+
+[node name="Button3" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1192.0
+offset_top = 64.0
+offset_right = 1473.0
+offset_bottom = 141.0
+theme_override_font_sizes/font_size = 50
+text = "character 3
+"
+
+[node name="Button4" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1576.0
+offset_top = 64.0
+offset_right = 1857.0
+offset_bottom = 141.0
+theme_override_font_sizes/font_size = 50
+text = "character 4
+"

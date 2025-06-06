@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbp4insxtvgpu"]
+
+[ext_resource type="Script" path="res://bullet.gd" id="1_v7oki"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_rtl8c"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v7oki"]
+albedo_color = Color(0, 0, 0, 1)
+emission_enabled = true
+emission_energy_multiplier = 5.0
+
+[node name="Bullet" type="Node3D"]
+script = ExtResource("1_v7oki")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_rtl8c")
+surface_material_override/0 = SubResource("StandardMaterial3D_v7oki")
+
+[node name="bullet_raycast" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.998871)
+target_position = Vector3(0, 0, -1)
+collide_with_areas = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

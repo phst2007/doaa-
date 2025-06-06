@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://il02t5h8js78"]
+
+[ext_resource type="Script" path="res://enemy_bullet.gd" id="1_1xapl"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_gl7bs"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mgp66"]
+albedo_color = Color(0, 0, 0, 1)
+emission_enabled = true
+emission_energy_multiplier = 5.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sgs6v"]
+radius = 0.05
+height = 0.5
+
+[node name="enemy_bullet" type="Node3D"]
+script = ExtResource("1_1xapl")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_gl7bs")
+surface_material_override/0 = SubResource("StandardMaterial3D_mgp66")
+
+[node name="bullet_raycast" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.998871)
+target_position = Vector3(0, 0, -1)
+collide_with_areas = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_sgs6v")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
