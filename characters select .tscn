@@ -1,6 +1,12 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=3 format=3 uid="uid://cmyf8wvhcb5mc"]
 
 [ext_resource type="Texture2D" path="res://DOAA! foto.png" id="1_7p3rq"]
+=======
+[gd_scene load_steps=3 format=3 uid="uid://b0fvefo4cyjkl"]
+
+[ext_resource type="Texture2D" uid="uid://n55w2wujty2f" path="res://DOAA! foto.png" id="1_7p3rq"]
+>>>>>>> Stashed changes
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_21wfg"]
 texture = ExtResource("1_7p3rq")
@@ -15,7 +21,10 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="foto" type="Panel" parent="."]
+<<<<<<< Updated upstream
 layout_mode = 0
+=======
+>>>>>>> Stashed changes
 offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(48.2845, 27.2759)

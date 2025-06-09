@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://il02t5h8js78"]
+[gd_scene load_steps=5 format=3 uid="uid://bv7cr047t3at3"]
 
-[ext_resource type="Script" path="res://enemy_bullet.gd" id="1_1xapl"]
+[ext_resource type="Script" uid="uid://q3806s0041tl" path="res://enemy_bullet.gd" id="1_1xapl"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_gl7bs"]
 
@@ -25,9 +25,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_mgp66")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.998871)
 target_position = Vector3(0, 0, -1)
 collide_with_areas = true
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 10.0
 
 [node name="Area3D" type="Area3D" parent="."]
 

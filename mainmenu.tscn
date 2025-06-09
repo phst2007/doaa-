@@ -1,11 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://168wkg15gcco"]
+[gd_scene load_steps=4 format=3 uid="uid://168wkg15gcco"]
 
-[ext_resource type="Script" path="res://main_menu.gd" id="1_pdres"]
-[ext_resource type="Texture2D" path="res://DOAA! foto.png" id="2_vuinv"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nmsro"]
-texture = ExtResource("2_vuinv")
-modulate_color = Color(0.517184, 0.517184, 0.517184, 1)
+[ext_resource type="Script" uid="uid://c4ahsjmwcsx7b" path="res://main_menu.gd" id="1_d2nv2"]
+[ext_resource type="Texture2D" uid="uid://n55w2wujty2f" path="res://DOAA! foto.png" id="2_wgsso"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x40ah"]
 bg_color = Color(1, 1, 1, 1)
@@ -24,14 +20,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_pdres")
+script = ExtResource("1_d2nv2")
 
-[node name="foto" type="Panel" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-scale = Vector2(48.2845, 27.2759)
-theme_override_styles/panel = SubResource("StyleBoxTexture_nmsro")
+[node name="Doaa!Foto" type="Sprite2D" parent="."]
+position = Vector2(961.75, 538)
+scale = Vector2(2.92901, 2.37555)
+texture = ExtResource("2_wgsso")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -97,9 +91,9 @@ layout_mode = 0
 offset_left = 624.0
 offset_top = 48.0
 offset_right = 1248.0
-offset_bottom = 321.0
+offset_bottom = 597.0
 theme_override_font_sizes/font_size = 200
-text = "DOAA
+text = "DOAA!
 "
 horizontal_alignment = 1
 vertical_alignment = 1

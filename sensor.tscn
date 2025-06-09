@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dmxmmo4se2m33"]
 
-[ext_resource type="Script" path="res://sensor.gd" id="1_7e468"]
+[ext_resource type="Script" uid="uid://bc2b3cf4a6k5c" path="res://sensor.gd" id="1_7e468"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_025o5"]
 transparency = 1

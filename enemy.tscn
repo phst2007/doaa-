@@ -1,12 +1,35 @@
-[gd_scene load_steps=4 format=3 uid="uid://dewr3h4xqr6sb"]
+[gd_scene load_steps=10 format=3 uid="uid://dewr3h4xqr6sb"]
 
 [ext_resource type="Script" uid="uid://b33rf6s12bycp" path="res://enemy.gd" id="1_4gyqm"]
 [ext_resource type="PackedScene" uid="uid://dxp4v0bjgbqhv" path="res://enemy.blend" id="1_7k104"]
+[ext_resource type="Script" uid="uid://hf5i7iiyd6ra" path="res://area_3d.gd" id="3_iifgy"]
+[ext_resource type="PackedScene" uid="uid://bc3fkjn0r7xda" path="res://ak473dloaded.fbx" id="3_qi2p4"]
+[ext_resource type="Script" uid="uid://weo2540y3f4p" path="res://area_3d_head.gd" id="4_epg4t"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4gyqm"]
 radius = 0.35
 
-[node name="enemy" type="CharacterBody3D"]
+[sub_resource type="GDScript" id="GDScript_epg4t"]
+script/source = "extends CollisionShape3D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3yqyl"]
+radius = 0.8
+height = 4.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_wujgv"]
+
+[node name="enemy" type="CharacterBody3D" groups=["enemy"]]
 script = ExtResource("1_4gyqm")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
@@ -14,6 +37,33 @@ script = ExtResource("1_4gyqm")
 [node name="Collisionenemy" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.044, 0)
 shape = SubResource("CapsuleShape3D_4gyqm")
+script = SubResource("GDScript_epg4t")
 
 [node name="enemy" parent="." instance=ExtResource("1_7k104")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+transform = Transform3D(-0.5, 0, -4.37114e-08, 0, 0.5, 0, 4.37114e-08, 0, -0.5, 0, 0, 0)
+
+[node name="Area3D" type="Area3D" parent="enemy" groups=["enemy"]]
+script = ExtResource("3_iifgy")
+
+[node name="CollisionTorso" type="CollisionShape3D" parent="enemy/Area3D" groups=["enemies", "enemy"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.98799, 0)
+shape = SubResource("CapsuleShape3D_3yqyl")
+
+[node name="Area3DHead" type="Area3D" parent="enemy" groups=["enemy"]]
+script = ExtResource("4_epg4t")
+
+[node name="Collisionhead" type="CollisionShape3D" parent="enemy/Area3DHead" groups=["enemy"]]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -1.23404e-08, 4.06076, 0.141158)
+shape = SubResource("SphereShape3D_wujgv")
+
+[node name="ak473dloaded" parent="." instance=ExtResource("3_qi2p4")]
+transform = Transform3D(-8.74228e-09, 0.2, -8.74228e-09, 0, -8.74228e-09, -0.2, -0.2, -8.74228e-09, 3.82137e-16, 0, 2, -0.218418)
+
+[node name="ATKtimer" type="Timer" parent="."]
+
+[node name="muzzle" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.08453, -0.271838)
+
+[connection signal="torsohit" from="enemy/Area3D" to="." method="_on_area_3d_torsohit"]
+[connection signal="headhit" from="enemy/Area3DHead" to="." method="_on_area_3d_head_headhit"]
+[connection signal="timeout" from="ATKtimer" to="." method="_on_ATKtimer_timeout"]

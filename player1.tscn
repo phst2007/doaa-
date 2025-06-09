@@ -1,50 +1,94 @@
-[gd_scene load_steps=5 format=3 uid="uid://dfuweiofaw6op"]
+[gd_scene load_steps=8 format=3 uid="uid://ckfw5p04lkf47"]
 
-[ext_resource type="Script" path="res://player1.gd" id="1_mp1ui"]
-[ext_resource type="PackedScene" uid="uid://b1tfm587c24g4" path="res://tophat.blend" id="2_2xwcl"]
-[ext_resource type="PackedScene" uid="uid://lt2fj5t4a47g" path="res://ak_47.tscn" id="2_wjvd1"]
+[ext_resource type="Script" uid="uid://bwykr01bgig7o" path="res://player1.gd" id="1_onrkg"]
+[ext_resource type="PackedScene" uid="uid://b1tfm587c24g4" path="res://tophat.blend" id="2_onrkg"]
+[ext_resource type="PackedScene" uid="uid://bc3fkjn0r7xda" path="res://ak473dloaded.fbx" id="3_i3pqv"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1bvp3"]
-height = 2.4
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i3pqv"]
+height = 2.5223
 
-[node name="player" type="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.315128, 0)
-script = ExtResource("1_mp1ui")
+[sub_resource type="Animation" id="Animation_evla6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
 
-[node name="Collision" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0981984, 0.891682, 0)
-shape = SubResource("CapsuleShape3D_1bvp3")
+[sub_resource type="Animation" id="Animation_8rbij"]
+resource_name = "shoot"
+length = 0.1
+step = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.1, 0.01, 0), Vector3(0, 0, 0)]
+}
 
-[node name="Collisioncrouch" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0.291792, 0.011731)
-shape = SubResource("CapsuleShape3D_1bvp3")
-disabled = true
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dr6il"]
+_data = {
+&"RESET": SubResource("Animation_evla6"),
+&"shoot": SubResource("Animation_8rbij")
+}
+
+[node name="player" type="CharacterBody3D" groups=["player"]]
+script = ExtResource("1_onrkg")
+
+[node name="standingcolision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.976496, 0)
+shape = SubResource("CapsuleShape3D_i3pqv")
+
+[node name="crouchingcolision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.6, 0, 0, 0, 1, 0, 0.37707, 0)
+shape = SubResource("CapsuleShape3D_i3pqv")
+
+[node name="tophat" parent="." instance=ExtResource("2_onrkg")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -1.447, 0)
 
 [node name="head" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.083249, 1.63852, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.16657, -0.195921)
 
-[node name="Camera3D" type="Camera3D" parent="head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0855718, 0.0596855, -0.119685)
+[node name="Camera" type="Camera3D" parent="head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00058794, -0.0284739, 0.0594944)
 fov = 110.0
-near = 0.005
+near = 0.01
 
 [node name="gun_holder" type="Node3D" parent="head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.04, -0.01, -0.3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13703, -0.0966892, -0.097696)
 
-[node name="ak47" parent="head/gun_holder" instance=ExtResource("2_wjvd1")]
+[node name="ak47" parent="head/gun_holder" instance=ExtResource("3_i3pqv")]
 transform = Transform3D(-4.37114e-09, 0.1, -4.37114e-09, 0, -4.37114e-09, -0.1, -0.1, -4.37114e-09, 1.91069e-16, 0, 0, 0)
 
-[node name="muzzle" type="Node3D" parent="head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0835197, 0.604691, -0.79978)
+[node name="gun_AnimationPlayer" type="AnimationPlayer" parent="head/gun_holder/ak47"]
+libraries = {
+&"": SubResource("AnimationLibrary_dr6il")
+}
 
-[node name="tophat" parent="." instance=ExtResource("2_2xwcl")]
-transform = Transform3D(-0.8, 0, -1.20797e-07, 0, 0.8, 0, 1.20797e-07, 0, -0.8, 0, -1.172, 0)
+[node name="RayCast3D" type="RayCast3D" parent="head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00058794, -0.0284739, 0.259494)
+target_position = Vector3(0, 1, 0)
+
+[node name="muzzle" type="Node3D" parent="head"]
+transform = Transform3D(1, 7.10543e-15, 7.10543e-15, -7.10543e-15, 1, 0, -7.10543e-15, -4.65868e-21, 1, 0, 0.5, -1)
 
 [node name="timers" type="Node" parent="."]
 
 [node name="DamageTimer" type="Timer" parent="timers"]
 wait_time = 5.0
-one_shot = true
 
 [node name="HealTimer" type="Timer" parent="timers"]
 wait_time = 0.5

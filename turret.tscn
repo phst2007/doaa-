@@ -1,6 +1,6 @@
-[gd_scene load_steps=15 format=4 uid="uid://cspr5mr353xu0"]
+[gd_scene load_steps=15 format=4 uid="uid://dv4suw5ud15jd"]
 
-[ext_resource type="Script" path="res://turret.gd" id="2_tjdg3"]
+[ext_resource type="Script" uid="uid://b1vsgp5fc3745" path="res://turret.gd" id="2_tjdg3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_utpqj"]
 resource_name = "Material.008"

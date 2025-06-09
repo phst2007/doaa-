@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dbp4insxtvgpu"]
 
-[ext_resource type="Script" path="res://bullet.gd" id="1_v7oki"]
+[ext_resource type="Script" uid="uid://unxdk4ha2r62" path="res://bullet.gd" id="1_v7oki"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_rtl8c"]
 
